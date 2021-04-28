@@ -6,7 +6,7 @@ public class Wallet : MonoBehaviour
 {
     [Tooltip("Starting balance")] public int StartingBalance = 10;
 
-    public float CurrentBalance { get; set; }
+    public float CurrentBalance;
 
     void Start()
     {
@@ -20,12 +20,14 @@ public class Wallet : MonoBehaviour
         Debug.Log("Current Balance:" + CurrentBalance.ToString());
     }
 
-    public void Pay(float amount, GameObject destinatary)
+    public bool Pay(float amount)
     {
         float BalanceBefore = CurrentBalance;
         if (CurrentBalance - amount >= 0)
         {
             CurrentBalance -= amount;
+            return true;
         }
+        else return false;
     }
 }
