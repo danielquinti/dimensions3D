@@ -9,14 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2529580269645609534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bde7a0a3c1c0ef45a616ec70c871143, type: 3}
+  m_Script: {fileID: 11500000, guid: a621dcec2fc2a4f46a6c43aa4dc07169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   VerticalBobFrequency: 1
   BobbingAmount: 1
   RotatingSpeed: 360
   PickupSfx: {fileID: 0}
-  PickupVfxPrefab: {fileID: 0}
+  PickupVfxPrefab: {fileID: 18133231791472539, guid: e44fc97440f45e946a0bdbdd460acfb9,
+    type: 3}
+  Value: 30
 --- !u!1001 &524190758648670502
 PrefabInstance:
   m_ObjectHideFlags: 0
