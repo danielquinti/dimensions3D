@@ -25,7 +25,7 @@ namespace Dimensions
         [Header("Parameters")]
         [Tooltip("The Y height at which the enemy will be automatically killed (if it falls off of the level)")]
         public float SelfDestructYHeight = -20f;
-
+        
         [Tooltip("The distance at which the enemy considers that it has reached its current path destination point")]
         public float PathReachingRadius = 2f;
 
@@ -78,8 +78,8 @@ namespace Dimensions
         public Transform DeathVfxSpawnPoint;
 
         [Header("Loot")]
-        [Tooltip("The object this enemy can drop when dying")]
-        public GameObject LootPrefab;
+        [Tooltip("The objects this enemy can drop when dying")]
+        public GameObject[] LootPrefabList;
 
         [Tooltip("The chance the object has to drop")]
         [Range(0, 1)]
@@ -128,7 +128,6 @@ namespace Dimensions
         WeaponController m_CurrentWeapon;
         WeaponController[] m_Weapons;
         Unity.FPS.AI.NavigationModule m_NavigationModule;
-
         void Start()
         {
             m_CustomEnemyManager = FindObjectOfType<CustomEnemyManager>();
@@ -380,7 +379,7 @@ namespace Dimensions
             // loot an object
             if (TryDropItem())
             {
-                Instantiate(LootPrefab, transform.position, Quaternion.identity);
+                Instantiate(LootPrefabList[Random.Range(0,LootPrefabList.Length-1)], transform.position, Quaternion.identity);
             }
 
             // this will call the OnDestroy function
@@ -444,7 +443,7 @@ namespace Dimensions
 
         public bool TryDropItem()
         {
-            if (DropRate == 0 || LootPrefab == null)
+            if (DropRate == 0 || LootPrefabList.Length == 0)
                 return false;
             else if (DropRate == 1)
                 return true;
