@@ -1,19 +1,16 @@
-﻿using Unity.FPS.Game;
+﻿using Unity.FPS.Gameplay;
 using UnityEngine;
 
-namespace Unity.FPS.Gameplay
+public class GearPickup : Unity.FPS.Gameplay.Pickup
 {
-    public class GearPickup : Pickup
-    {
-        [Header("Parameters")] [Tooltip("Loot reward")]
-        public float Value;
+    [Header("Parameters")] [Tooltip("Loot reward")]
+    public float Value;
 
-        protected override void OnPicked(PlayerCharacterController player)
-        {
-            Wallet playerWallet = player.GetComponent<Wallet>();
-            playerWallet.Earn(Value);
-            PlayPickupFeedback();
-            Destroy(gameObject);
-        }
+    protected override void OnPicked(PlayerCharacterController player)
+    {
+        Wallet playerWallet = player.GetComponent<Wallet>();
+        playerWallet.Earn(Value);
+        PlayPickupFeedback();
+        Destroy(gameObject);
     }
 }
