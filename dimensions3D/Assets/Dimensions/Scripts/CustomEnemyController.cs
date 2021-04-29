@@ -379,7 +379,7 @@ namespace Dimensions
             // loot an object
             if (TryDropItem())
             {
-                Instantiate(LootPrefabList[Random.Range(0,LootPrefabList.Length-1)], transform.position, Quaternion.identity);
+                Instantiate(LootPrefabList[Random.Range(0, LootPrefabList.Length)], transform.position, Quaternion.identity);
             }
 
             // this will call the OnDestroy function
