@@ -50,7 +50,7 @@ namespace Dimensions
         [Header("Shoot Parameters")] [Tooltip("The type of weapon wil affect how it shoots")]
         public WeaponShootType ShootType;
 
-        [Tooltip("The projectile prefab")] public ProjectileBase ProjectilePrefab;
+        [Tooltip("The projectile prefab")] public Unity.FPS.Game.ProjectileBase ProjectilePrefab;
 
         [Tooltip("Minimum duration between two shots")]
         public float DelayBetweenShots = 0.5f;
@@ -169,7 +169,7 @@ namespace Dimensions
             m_LastMuzzlePosition = WeaponMuzzle.position;
 
             m_ShootAudioSource = GetComponent<AudioSource>();
-            DebugUtility.HandleErrorIfNullGetComponent<AudioSource, WeaponController>(m_ShootAudioSource, this,
+            Unity.FPS.Game.DebugUtility.HandleErrorIfNullGetComponent<AudioSource, WeaponController>(m_ShootAudioSource, this,
                 gameObject);
 
             if (UseContinuousShootSound)
@@ -178,7 +178,7 @@ namespace Dimensions
                 m_ContinuousShootAudioSource.playOnAwake = false;
                 m_ContinuousShootAudioSource.clip = ContinuousShootLoopSfx;
                 m_ContinuousShootAudioSource.outputAudioMixerGroup =
-                    AudioUtility.GetAudioGroup(AudioUtility.AudioGroups.WeaponShoot);
+                    Unity.FPS.Game.AudioUtility.GetAudioGroup(Unity.FPS.Game.AudioUtility.AudioGroups.WeaponShoot);
                 m_ContinuousShootAudioSource.loop = true;
             }
 
@@ -211,7 +211,7 @@ namespace Dimensions
             m_PhysicalAmmoPool.Enqueue(nextShell);
         }
 
-        void PlaySFX(AudioClip sfx) => AudioUtility.CreateSFX(sfx, transform.position, AudioUtility.AudioGroups.WeaponShoot, 0.0f);
+        void PlaySFX(AudioClip sfx) => Unity.FPS.Game.AudioUtility.CreateSFX(sfx, transform.position, Unity.FPS.Game.AudioUtility.AudioGroups.WeaponShoot, 0.0f);
 
 
         void Reload()
@@ -446,9 +446,9 @@ namespace Dimensions
             for (int i = 0; i < bulletsPerShotFinal; i++)
             {
                 Vector3 shotDirection = GetShotDirectionWithinSpread(WeaponMuzzle);
-                ProjectileBase newProjectile = Instantiate(ProjectilePrefab, WeaponMuzzle.position,
+                Unity.FPS.Game.ProjectileBase newProjectile = Instantiate(ProjectilePrefab, WeaponMuzzle.position,
                     Quaternion.LookRotation(shotDirection));
-                newProjectile.Shoot(this);
+                //newProjectile.Shoot(this);
             }
 
             // muzzle flash
