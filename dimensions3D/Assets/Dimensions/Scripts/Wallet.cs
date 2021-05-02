@@ -5,8 +5,11 @@ using UnityEngine;
 public class Wallet : MonoBehaviour
 {
     [Tooltip("Starting balance")] public int StartingBalance = 10;
+    
+    
 
     public float CurrentBalance;
+    public Vending reachable;
 
     void Start()
     {
@@ -29,5 +32,18 @@ public class Wallet : MonoBehaviour
             return true;
         }
         else return false;
+    }
+    
+    public void TryPay()
+    {
+        if (this.reachable == null && Pay(this.reachable.price))
+        {
+            this.reachable.GetReward(this);
+        }
+    }
+    
+    public void SetReachable(Vending reach)
+    {
+        this.reachable = reach;
     }
 }
