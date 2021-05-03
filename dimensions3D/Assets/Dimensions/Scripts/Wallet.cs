@@ -1,35 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Wallet : MonoBehaviour
 {
     [Tooltip("Starting balance")] public int StartingBalance = 10;
     
     Unity.FPS.Gameplay.PlayerInputHandler m_InputHandler;
 
-    public float CurrentBalance;
+    public int CurrentBalance;
     public Vending reachable;
+    public WalletBalanceDisplay display;
 
     void Start()
     {
         CurrentBalance = StartingBalance;
         m_InputHandler = GetComponent<Unity.FPS.Gameplay.PlayerInputHandler>();
+        display.ChangeBalance(CurrentBalance);
     }
 
-    public void Earn(float amount)
+    public void Earn(int amount)
     {
         float balanceBefore = CurrentBalance;
         CurrentBalance += amount;
-        Debug.Log("Current Balance:" + CurrentBalance.ToString());
+        display.ChangeBalance(CurrentBalance);
     }
 
-    public bool Pay(float amount)
+    public bool Pay(int amount)
     {
         float BalanceBefore = CurrentBalance;
         if (CurrentBalance - amount >= 0)
         {
             CurrentBalance -= amount;
+            display.ChangeBalance(CurrentBalance);
             return true;
         }
         else return false;

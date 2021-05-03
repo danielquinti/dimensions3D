@@ -8,9 +8,14 @@ public class WalletBalanceDisplay : MonoBehaviour
 {
     public GameObject player;
     public TextMeshProUGUI display;
+    int balance;
+    public void ChangeBalance(int actual)
+    {
+        balance = actual;
+    }
     // Update is called once per frame
     void Update()
     {
-        display.text = player.GetComponent<Wallet>().CurrentBalance.ToString();
+        display.text = balance.ToString();
     }
 }

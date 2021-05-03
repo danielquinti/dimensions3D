@@ -4,7 +4,7 @@ using UnityEngine;
 public class GearPickup : Unity.FPS.Gameplay.Pickup
 {
     [Header("Parameters")] [Tooltip("Loot reward")]
-    public float Value;
+    public int Value;
 
     protected override void OnPicked(PlayerCharacterController player)
     {
