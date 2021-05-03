@@ -6,7 +6,7 @@ public class Wallet : MonoBehaviour
 {
     [Tooltip("Starting balance")] public int StartingBalance = 10;
     
-    
+    Unity.FPS.Gameplay.PlayerInputHandler m_InputHandler;
 
     public float CurrentBalance;
     public Vending reachable;
@@ -14,6 +14,7 @@ public class Wallet : MonoBehaviour
     void Start()
     {
         CurrentBalance = StartingBalance;
+        m_InputHandler = GetComponent<Unity.FPS.Gameplay.PlayerInputHandler>();
     }
 
     public void Earn(float amount)
@@ -36,9 +37,22 @@ public class Wallet : MonoBehaviour
     
     public void TryPay()
     {
-        if (this.reachable == null && Pay(this.reachable.price))
+        if (this.reachable != null && Pay(this.reachable.price))
         {
             this.reachable.GetReward(this);
+        }
+        else
+        {
+            Debug.Log("Tried");
+        }
+    }
+    
+    void Update()
+    {
+        if (m_InputHandler.GetInteractButtonDown())
+        {
+            // Check if f pressed
+            TryPay();
         }
     }
     
