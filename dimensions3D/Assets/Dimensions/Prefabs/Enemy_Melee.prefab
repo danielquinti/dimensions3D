@@ -350,7 +350,8 @@ MonoBehaviour:
   DeathVfx: {fileID: 8950624839484268180, guid: 45ce85b82008be84287f2c7e5bf07647,
     type: 3}
   DeathVfxSpawnPoint: {fileID: 381893446485871685}
-  LootPrefabList: []
+  LootPrefabList:
+  - {fileID: 2529580269645609534, guid: 49f929ae93cf3c342a9a5326e22d9ca6, type: 3}
   DropRate: 1
   PathReachingRangeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   AttackRangeColor: {r: 1, g: 0, b: 0, a: 1}
@@ -1066,6 +1067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b0765d38fdab449ac605687bb20b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageRate: 1
 --- !u!1 &9200139261743394960
 GameObject:
   m_ObjectHideFlags: 0
