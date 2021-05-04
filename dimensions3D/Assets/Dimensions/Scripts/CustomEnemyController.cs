@@ -413,7 +413,7 @@ namespace Unity.FPS.AI
             }
         }
 
-        public bool TryAtack(Vector3 enemyPosition)
+        virtual public bool TryAtack(Vector3 enemyPosition)
         {
             if (m_GameFlowManager.GameIsEnding)
                 return false;
