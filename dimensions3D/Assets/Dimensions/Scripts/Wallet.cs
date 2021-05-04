@@ -9,20 +9,20 @@ public class Wallet : MonoBehaviour
 
     public int CurrentBalance;
     public Vending reachable;
-    public WalletBalanceDisplay display;
+    public InfoDisplay display;
 
     void Start()
     {
         CurrentBalance = StartingBalance;
         m_InputHandler = GetComponent<Unity.FPS.Gameplay.PlayerInputHandler>();
-        display.ChangeBalance(CurrentBalance);
+        display.SetInfo(CurrentBalance.ToString());
     }
 
     public void Earn(int amount)
     {
         float balanceBefore = CurrentBalance;
         CurrentBalance += amount;
-        display.ChangeBalance(CurrentBalance);
+        display.SetInfo(CurrentBalance.ToString());
     }
 
     public bool Pay(int amount)
@@ -31,7 +31,7 @@ public class Wallet : MonoBehaviour
         if (CurrentBalance - amount >= 0)
         {
             CurrentBalance -= amount;
-            display.ChangeBalance(CurrentBalance);
+            display.SetInfo(CurrentBalance.ToString());
             return true;
         }
         else return false;
@@ -45,7 +45,7 @@ public class Wallet : MonoBehaviour
         }
         else
         {
-            Debug.Log("Tried");
+            this.reachable.Decline();
         }
     }
     

@@ -6,13 +6,16 @@ using UnityEngine;
 public class Vending : MonoBehaviour
 {
     public int price = 500;
+    public string itemName = "";
+    public InfoDisplay display;
     public Unity.FPS.Game.WeaponController weapon;
+    bool active = true;
     
     void OnTriggerEnter (Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if ((other.gameObject.tag == "Player") & active)
         {
-            Debug.Log("Object Entered the trigger");
+            display.SetInfo("Press F to buy " + itemName + " for " + price + " tokens.");
             other.GetComponent<Wallet>().SetReachable(this);
         }
     }
@@ -21,13 +24,21 @@ public class Vending : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Object exited the trigger");
+            display.SetInfo("");
             other.GetComponent<Wallet>().SetReachable(null);
         }
     }
     
-    public void GetReward(MonoBehaviour wallet)
+    public void GetReward(MonoBehaviour player)
     {
-    	wallet.GetComponent<PlayerWeaponsManager>().AddWeapon(weapon);
+        display.SetInfo(itemName + " acquired.");
+    	player.GetComponent<PlayerWeaponsManager>().AddWeapon(weapon);
+        active = false;
+        player.GetComponent<Wallet>().SetReachable(null);
+    }
+
+    public void Decline()
+    {
+        display.SetInfo("Not enough tokens.");
     }
 }
