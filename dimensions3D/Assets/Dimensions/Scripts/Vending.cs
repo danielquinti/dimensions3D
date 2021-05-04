@@ -9,9 +9,9 @@ public class Vending : MonoBehaviour
     public string itemName = "";
     public InfoDisplay display;
     public Unity.FPS.Game.WeaponController weapon;
-    bool active = true;
+    protected bool active = true;
     
-    void OnTriggerEnter (Collider other)
+    virtual public void OnTriggerEnter (Collider other)
     {
         if ((other.gameObject.tag == "Player") & active)
         {
@@ -29,7 +29,7 @@ public class Vending : MonoBehaviour
         }
     }
     
-    public void GetReward(MonoBehaviour player)
+    virtual public void GetReward(MonoBehaviour player)
     {
         display.SetInfo(itemName + " acquired.");
     	player.GetComponent<PlayerWeaponsManager>().AddWeapon(weapon);
