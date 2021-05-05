@@ -10,6 +10,7 @@ namespace Unity.FPS.AI
 		public List<CustomEnemyController> Enemies { get; private set; }
 		public int NumberOfEnemiesTotal { get; private set; }
 		public int NumberOfEnemiesRemaining;
+		public int MaxNumberOfEnemies = 1;
 
 		public void RegisterEnemy(CustomEnemyController enemy)
 		{
@@ -18,7 +19,7 @@ namespace Unity.FPS.AI
 
 		public void UnregisterEnemy(CustomEnemyController enemyKilled)
 		{
-			NumberOfEnemiesRemaining --;
+			NumberOfEnemiesRemaining--;
 			// removes the enemy from the list, so that we can keep track of how many are left on the map
 			Enemies.Remove(enemyKilled);
 			enemyTally.SetInfo(NumberOfEnemiesRemaining + "/" + NumberOfEnemiesTotal);
@@ -32,7 +33,7 @@ namespace Unity.FPS.AI
 		{
 			public string name;
 			public float rate;
-			public List <Transform> enemies;
+			public List<Transform> enemies;
 		}
 
 		public Wave[] waves;
@@ -121,7 +122,7 @@ namespace Unity.FPS.AI
 			if (searchCountdown <= 0f)
 			{
 				searchCountdown = 1f;
-				if (NumberOfEnemiesRemaining==0)
+				if (NumberOfEnemiesRemaining == 0)
 				{
 					return false;
 				}
@@ -136,11 +137,16 @@ namespace Unity.FPS.AI
 			enemyTally.SetInfo(NumberOfEnemiesRemaining + "/" + NumberOfEnemiesTotal);
 			roundInfo.SetInfo(_wave.name);
 			state = SpawnState.SPAWNING;
-				for (int i = 0; i < _wave.enemies.Count; i++)
+			int i = 0;
+			while (i < _wave.enemies.Count)
+			{
+				if (Enemies.Count < MaxNumberOfEnemies)
 				{
 					SpawnEnemy(_wave.enemies[i]);
-					yield return new WaitForSeconds(1f / _wave.rate);
+					i++;
 				}
+				yield return new WaitForSeconds(1f / _wave.rate);
+			}
 
 
 			state = SpawnState.WAITING;

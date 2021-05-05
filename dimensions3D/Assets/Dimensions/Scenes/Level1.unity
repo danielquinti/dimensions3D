@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -346,6 +346,11 @@ PrefabInstance:
         type: 3}
       propertyPath: waves.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4293547193329074707, guid: be43c310efe6ba441a62b8321eaf3f75,
+        type: 3}
+      propertyPath: MaxNumberOfEnemies
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4293547193329074707, guid: be43c310efe6ba441a62b8321eaf3f75,
         type: 3}
