@@ -108,12 +108,12 @@ namespace Unity.FPS.AI
         MaterialPropertyBlock m_EyeColorMaterialPropertyBlock;
 
         public PatrolPath PatrolPath { get; set; }
-        public GameObject KnownDetectedTarget => DetectionModule.KnownDetectedTarget;
-        public bool IsTargetInAttackRange => DetectionModule.IsTargetInAttackRange;
-        public bool IsSeeingTarget => DetectionModule.IsSeeingTarget;
-        public bool HadKnownTarget => DetectionModule.HadKnownTarget;
+        public GameObject KnownDetectedTarget => CustomDetectionModule.KnownDetectedTarget;
+        public bool IsTargetInAttackRange => CustomDetectionModule.IsTargetInAttackRange;
+        public bool IsSeeingTarget => CustomDetectionModule.IsSeeingTarget;
+        public bool HadKnownTarget => CustomDetectionModule.HadKnownTarget;
         public NavMeshAgent NavMeshAgent { get; private set; }
-        public DetectionModule DetectionModule { get; private set; }
+        public CustomDetectionModule CustomDetectionModule { get; private set; }
 
         int m_PathDestinationNodeIndex;
         CustomEnemyManager m_CustomEnemyManager;
@@ -159,19 +159,19 @@ namespace Unity.FPS.AI
             var weapon = GetCurrentWeapon();
             weapon.ShowWeapon(true);
 
-            var detectionModules = GetComponentsInChildren<DetectionModule>();
-            DebugUtility.HandleErrorIfNoComponentFound<DetectionModule, CustomEnemyController>(detectionModules.Length, this,
+            var CustomDetectionModules = GetComponentsInChildren<CustomDetectionModule>();
+            DebugUtility.HandleErrorIfNoComponentFound<CustomDetectionModule, CustomEnemyController>(CustomDetectionModules.Length, this,
                 gameObject);
-            DebugUtility.HandleWarningIfDuplicateObjects<DetectionModule, CustomEnemyController>(detectionModules.Length,
+            DebugUtility.HandleWarningIfDuplicateObjects<CustomDetectionModule, CustomEnemyController>(CustomDetectionModules.Length,
                 this, gameObject);
             // Initialize detection module
-            DetectionModule = detectionModules[0];
-            DetectionModule.onDetectedTarget += OnDetectedTarget;
-            DetectionModule.onLostTarget += OnLostTarget;
-            onAttack += DetectionModule.OnAttack;
+            CustomDetectionModule = CustomDetectionModules[0];
+            CustomDetectionModule.onDetectedTarget += OnDetectedTarget;
+            CustomDetectionModule.onLostTarget += OnLostTarget;
+            onAttack += CustomDetectionModule.OnAttack;
 
             var navigationModules = GetComponentsInChildren<NavigationModule>();
-            DebugUtility.HandleWarningIfDuplicateObjects<DetectionModule, CustomEnemyController>(detectionModules.Length,
+            DebugUtility.HandleWarningIfDuplicateObjects<CustomDetectionModule, CustomEnemyController>(CustomDetectionModules.Length,
                 this, gameObject);
             // Override navmesh agent data
             if (navigationModules.Length > 0)
@@ -213,7 +213,7 @@ namespace Unity.FPS.AI
         void Update()
         {
             EnsureIsWithinLevelBounds();
-            DetectionModule.HandleTargetDetection(m_Actor,m_SelfColliders);
+            CustomDetectionModule.HandleTargetDetection(m_Actor,m_SelfColliders);
 
             Color currentColor = OnHitBodyGradient.Evaluate((Time.time - m_LastTimeDamaged) / FlashOnHitDuration);
             m_BodyFlashMaterialPropertyBlock.SetColor("_EmissionColor", currentColor);
@@ -353,7 +353,7 @@ namespace Unity.FPS.AI
             if (damageSource && !damageSource.GetComponent<CustomEnemyController>())
             {
                 // pursue the player
-                DetectionModule.OnDamaged(damageSource);
+                CustomDetectionModule.OnDamaged(damageSource);
 
                 onDamaged?.Invoke();
                 m_LastTimeDamaged = Time.time;
@@ -391,15 +391,15 @@ namespace Unity.FPS.AI
             Gizmos.color = PathReachingRangeColor;
             Gizmos.DrawWireSphere(transform.position, PathReachingRadius);
 
-            if (DetectionModule != null)
+            if (CustomDetectionModule != null)
             {
                 // Detection range
                 Gizmos.color = DetectionRangeColor;
-                Gizmos.DrawWireSphere(transform.position, DetectionModule.DetectionRange);
+                Gizmos.DrawWireSphere(transform.position, CustomDetectionModule.DetectionRange);
 
                 // Attack range
                 Gizmos.color = AttackRangeColor;
-                Gizmos.DrawWireSphere(transform.position, DetectionModule.AttackRange);
+                Gizmos.DrawWireSphere(transform.position, CustomDetectionModule.AttackRange);
             }
         }
 
