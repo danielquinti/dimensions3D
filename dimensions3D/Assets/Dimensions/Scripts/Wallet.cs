@@ -43,7 +43,7 @@ public class Wallet : MonoBehaviour
         {
             this.reachable.GetReward(this);
         }
-        else
+        else if (this.reachable != null)
         {
             this.reachable.Decline();
         }

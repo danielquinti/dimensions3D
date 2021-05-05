@@ -23,6 +23,10 @@ namespace Unity.FPS.AI
         }
 
         [Header("Parameters")]
+        [Tooltip("Randomizes the speed")]
+        public bool RandomizeSpeed = false;
+        public float RandomizeSpeedAmount = 1;
+
         [Tooltip("The Y height at which the enemy will be automatically killed (if it falls off of the level)")]
         public float SelfDestructYHeight = -20f;
         
@@ -181,6 +185,14 @@ namespace Unity.FPS.AI
                 NavMeshAgent.angularSpeed = m_NavigationModule.AngularSpeed;
                 NavMeshAgent.acceleration = m_NavigationModule.Acceleration;
             }
+
+            if (this.RandomizeSpeed)
+            {
+                NavMeshAgent.speed += Random.Range(-RandomizeSpeedAmount,
+                    RandomizeSpeedAmount);
+            }
+
+
 
             foreach (var renderer in GetComponentsInChildren<Renderer>(true))
             {
