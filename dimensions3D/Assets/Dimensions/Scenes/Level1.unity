@@ -1396,6 +1396,11 @@ PrefabInstance:
       propertyPath: display
       value: 
       objectReference: {fileID: 971985825}
+    - target: {fileID: 6322660540686748050, guid: 15fd04ebfd6e15320afc11a0ccfb34f0,
+        type: 3}
+      propertyPath: Declined
+      value: 
+      objectReference: {fileID: 8300000, guid: 69d23591fa016a540b3be1db03e55a48, type: 3}
     - target: {fileID: 6715306596048216032, guid: 15fd04ebfd6e15320afc11a0ccfb34f0,
         type: 3}
       propertyPath: price
@@ -1412,5 +1417,10 @@ PrefabInstance:
       propertyPath: display
       value: 
       objectReference: {fileID: 971985825}
+    - target: {fileID: 6715306596048216032, guid: 15fd04ebfd6e15320afc11a0ccfb34f0,
+        type: 3}
+      propertyPath: Declined
+      value: 
+      objectReference: {fileID: 8300000, guid: 69d23591fa016a540b3be1db03e55a48, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15fd04ebfd6e15320afc11a0ccfb34f0, type: 3}
