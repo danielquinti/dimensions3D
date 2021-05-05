@@ -465,7 +465,7 @@ MonoBehaviour:
   isLineOfSight: 0
   DetectionSourcePoint: {fileID: 6571005840976436832}
   DetectionRange: 100
-  AttackRange: 10
+  AttackRange: 20
   KnownTargetTimeout: 4
   Animator: {fileID: 0}
 --- !u!1 &6421371450313891992

@@ -289,7 +289,7 @@ MonoBehaviour:
   AttackStopDistanceRatio: 0.081
   RandomHitSparks: []
   OnDetectVfx: []
-  OnDetectSfx: {fileID: 8300000, guid: 25722734eeccba042a18e26e376ca542, type: 3}
+  OnDetectSfx: {fileID: 0}
   MovementSound: {fileID: 0}
   PitchDistortionMovementSpeed:
     Min: 0
