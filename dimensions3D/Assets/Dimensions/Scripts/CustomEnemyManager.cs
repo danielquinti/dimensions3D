@@ -9,24 +9,16 @@ namespace Unity.FPS.AI
 	{
 		public List<CustomEnemyController> Enemies { get; private set; }
 		public int NumberOfEnemiesTotal { get; private set; }
-		public int NumberOfEnemiesRemaining => Enemies.Count;
+		public int NumberOfEnemiesRemaining;
 
 		public void RegisterEnemy(CustomEnemyController enemy)
 		{
 			Enemies.Add(enemy);
-			enemyTally.SetInfo(NumberOfEnemiesRemaining + "/" + NumberOfEnemiesTotal);
-
 		}
 
 		public void UnregisterEnemy(CustomEnemyController enemyKilled)
 		{
-			int enemiesRemainingNotification = NumberOfEnemiesRemaining - 1;
-
-			EnemyKillEvent evt = Events.EnemyKillEvent;
-			evt.Enemy = enemyKilled.gameObject;
-			evt.RemainingEnemyCount = enemiesRemainingNotification;
-			EventManager.Broadcast(evt);
-
+			NumberOfEnemiesRemaining --;
 			// removes the enemy from the list, so that we can keep track of how many are left on the map
 			Enemies.Remove(enemyKilled);
 			enemyTally.SetInfo(NumberOfEnemiesRemaining + "/" + NumberOfEnemiesTotal);
@@ -39,9 +31,8 @@ namespace Unity.FPS.AI
 		public class Wave
 		{
 			public string name;
-			public Transform enemy;
-			public int count;
 			public float rate;
+			public List <Transform> enemies;
 		}
 
 		public Wave[] waves;
@@ -84,7 +75,7 @@ namespace Unity.FPS.AI
 		{
 			if (state == SpawnState.WAITING)
 			{
-				if (NumberOfEnemiesRemaining==0)
+				if (!EnemyIsAlive())
 				{
 					roundInfo.SetInfo("Wave completed!");
 					WaveCompleted();
@@ -130,7 +121,7 @@ namespace Unity.FPS.AI
 			if (searchCountdown <= 0f)
 			{
 				searchCountdown = 1f;
-				if (GameObject.FindGameObjectWithTag("Enemy") == null)
+				if (NumberOfEnemiesRemaining==0)
 				{
 					return false;
 				}
@@ -140,14 +131,17 @@ namespace Unity.FPS.AI
 
 		IEnumerator SpawnWave(Wave _wave)
 		{
+			NumberOfEnemiesTotal = _wave.enemies.Count;
+			NumberOfEnemiesRemaining = NumberOfEnemiesTotal;
+			enemyTally.SetInfo(NumberOfEnemiesRemaining + "/" + NumberOfEnemiesTotal);
 			roundInfo.SetInfo(_wave.name);
-			NumberOfEnemiesTotal = _wave.count;
 			state = SpawnState.SPAWNING;
-			for (int i = 0; i < _wave.count; i++)
-			{
-				SpawnEnemy(_wave.enemy);
-				yield return new WaitForSeconds(1f / _wave.rate);
-			}
+				for (int i = 0; i < _wave.enemies.Count; i++)
+				{
+					SpawnEnemy(_wave.enemies[i]);
+					yield return new WaitForSeconds(1f / _wave.rate);
+				}
+
 
 			state = SpawnState.WAITING;
 
