@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Dimensions/Scenes/IntroMenu.unity
+    path: Assets/Dimensions/Scenes/CustomIntroMenu.unity
     guid: 47f30dca5d7379a45a6f7b38785228e4
   - enabled: 1
     path: Assets/Dimensions/Scenes/Level1.unity
