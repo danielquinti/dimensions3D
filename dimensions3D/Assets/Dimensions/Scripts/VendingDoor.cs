@@ -24,4 +24,9 @@ public class VendingDoor : Vending
         active = false;
         player.GetComponent<Wallet>().SetReachable(null);
     }
+
+    public bool IsActive()
+    {
+        return active;
+    }
 }

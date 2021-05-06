@@ -5,160 +5,165 @@ using System.Collections.Generic;
 
 namespace Unity.FPS.AI
 {
-	public class CustomEnemyManager : MonoBehaviour
-	{
-		public List<CustomEnemyController> Enemies { get; private set; }
-		public int NumberOfEnemiesTotal { get; private set; }
-		public int NumberOfEnemiesRemaining;
-		public int MaxNumberOfEnemies = 1;
+    public class CustomEnemyManager : MonoBehaviour
+    {
+        public List<CustomEnemyController> Enemies { get; private set; }
+        public int NumberOfEnemiesTotal { get; private set; }
+        public int NumberOfEnemiesRemaining;
+        public int MaxNumberOfEnemies = 1;
 
-		public void RegisterEnemy(CustomEnemyController enemy)
-		{
-			Enemies.Add(enemy);
-		}
+        public void RegisterEnemy(CustomEnemyController enemy)
+        {
+            Enemies.Add(enemy);
+        }
 
-		public void UnregisterEnemy(CustomEnemyController enemyKilled)
-		{
-			NumberOfEnemiesRemaining--;
-			// removes the enemy from the list, so that we can keep track of how many are left on the map
-			Enemies.Remove(enemyKilled);
-			enemyTally.SetInfo(NumberOfEnemiesRemaining + "/" + NumberOfEnemiesTotal);
+        public void UnregisterEnemy(CustomEnemyController enemyKilled)
+        {
+            NumberOfEnemiesRemaining--;
+            // removes the enemy from the list, so that we can keep track of how many are left on the map
+            Enemies.Remove(enemyKilled);
+            enemyTally.SetInfo(NumberOfEnemiesRemaining + "/" + NumberOfEnemiesTotal);
 
-		}
+        }
 
-		public enum SpawnState { SPAWNING, WAITING, COUNTING };
+        public enum SpawnState { SPAWNING, WAITING, COUNTING };
 
-		[System.Serializable]
-		public class Wave
-		{
-			public string name;
-			public float rate;
-			public List<Transform> enemies;
-		}
+        [System.Serializable]
+        public class Wave
+        {
+            public string name;
+            public float rate;
+            public List<Transform> enemies;
+        }
 
-		public Wave[] waves;
-		private int nextWave = 0;
-		public int NextWave
-		{
-			get { return nextWave + 1; }
-		}
+        public Wave[] waves;
+        private int nextWave = 0;
+        public int NextWave
+        {
+            get { return nextWave + 1; }
+        }
 
-		public Transform[] spawnPoints;
+        public List<Transform> spawnPoints;
 
-		public float timeBetweenWaves = 5f;
-		private float waveCountdown;
-		public float WaveCountdown
-		{
-			get { return waveCountdown; }
-		}
+        public float timeBetweenWaves = 5f;
+        private float waveCountdown;
+        public float WaveCountdown
+        {
+            get { return waveCountdown; }
+        }
 
-		private float searchCountdown = 1f;
+        private float searchCountdown = 1f;
 
-		private SpawnState state = SpawnState.COUNTING;
-		public SpawnState State
-		{
-			get { return state; }
-		}
-		public InfoDisplay roundInfo;
-		public InfoDisplay enemyTally;
-		void Start()
-		{
-			Enemies = new List<CustomEnemyController>();
-			if (spawnPoints.Length == 0)
-			{
-				Debug.LogError("No spawn points referenced.");
-			}
+        private SpawnState state = SpawnState.COUNTING;
+        public SpawnState State
+        {
+            get { return state; }
+        }
+        public InfoDisplay roundInfo;
+        public InfoDisplay enemyTally;
+        void Start()
+        {
+            Enemies = new List<CustomEnemyController>();
+            if (spawnPoints.Count == 0)
+            {
+                Debug.LogError("No spawn points referenced.");
+            }
 
-			waveCountdown = timeBetweenWaves;
-		}
+            waveCountdown = timeBetweenWaves;
+        }
 
-		void Update()
-		{
-			if (state == SpawnState.WAITING)
-			{
-				if (!EnemyIsAlive())
-				{
-					roundInfo.SetInfo("Wave completed!");
-					WaveCompleted();
-				}
-				else
-				{
-					return;
-				}
-			}
+        void Update()
+        {
+            if (state == SpawnState.WAITING)
+            {
+                if (!EnemyIsAlive())
+                {
+                    roundInfo.SetInfo("Wave completed!");
+                    WaveCompleted();
+                }
+                else
+                {
+                    return;
+                }
+            }
 
-			if (waveCountdown <= 0)
-			{
-				if (state != SpawnState.SPAWNING)
-				{
-					StartCoroutine(SpawnWave(waves[nextWave]));
-				}
-			}
-			else
-			{
-				waveCountdown -= Time.deltaTime;
-			}
-		}
+            if (waveCountdown <= 0)
+            {
+                if (state != SpawnState.SPAWNING)
+                {
+                    StartCoroutine(SpawnWave(waves[nextWave]));
+                }
+            }
+            else
+            {
+                waveCountdown -= Time.deltaTime;
+            }
+        }
 
-		void WaveCompleted()
-		{
-			state = SpawnState.COUNTING;
-			waveCountdown = timeBetweenWaves;
+        void WaveCompleted()
+        {
+            state = SpawnState.COUNTING;
+            waveCountdown = timeBetweenWaves;
 
-			if (nextWave + 1 > waves.Length - 1)
-			{
-				nextWave = 0;
-				roundInfo.SetInfo("ALL WAVES COMPLETE! Looping...");
-			}
-			else
-			{
-				nextWave++;
-			}
-		}
+            if (nextWave + 1 > waves.Length - 1)
+            {
+                nextWave = 0;
+                roundInfo.SetInfo("ALL WAVES COMPLETE! Looping...");
+            }
+            else
+            {
+                nextWave++;
+            }
+        }
 
-		bool EnemyIsAlive()
-		{
-			searchCountdown -= Time.deltaTime;
-			if (searchCountdown <= 0f)
-			{
-				searchCountdown = 1f;
-				if (NumberOfEnemiesRemaining == 0)
-				{
-					return false;
-				}
-			}
-			return true;
-		}
+        bool EnemyIsAlive()
+        {
+            searchCountdown -= Time.deltaTime;
+            if (searchCountdown <= 0f)
+            {
+                searchCountdown = 1f;
+                if (NumberOfEnemiesRemaining == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
-		IEnumerator SpawnWave(Wave _wave)
-		{
-			NumberOfEnemiesTotal = _wave.enemies.Count;
-			NumberOfEnemiesRemaining = NumberOfEnemiesTotal;
-			enemyTally.SetInfo(NumberOfEnemiesRemaining + "/" + NumberOfEnemiesTotal);
-			roundInfo.SetInfo(_wave.name);
-			state = SpawnState.SPAWNING;
-			int i = 0;
-			while (i < _wave.enemies.Count)
-			{
-				if (Enemies.Count < MaxNumberOfEnemies)
-				{
-					SpawnEnemy(_wave.enemies[i]);
-					i++;
-				}
-				yield return new WaitForSeconds(1f / _wave.rate);
-			}
+        IEnumerator SpawnWave(Wave _wave)
+        {
+            NumberOfEnemiesTotal = _wave.enemies.Count;
+            NumberOfEnemiesRemaining = NumberOfEnemiesTotal;
+            enemyTally.SetInfo(NumberOfEnemiesRemaining + "/" + NumberOfEnemiesTotal);
+            roundInfo.SetInfo(_wave.name);
+            state = SpawnState.SPAWNING;
+            int i = 0;
+            while (i < _wave.enemies.Count)
+            {
+                if (Enemies.Count < MaxNumberOfEnemies)
+                {
+                    SpawnEnemy(_wave.enemies[i]);
+                    i++;
+                }
+                yield return new WaitForSeconds(1f / _wave.rate);
+            }
 
 
-			state = SpawnState.WAITING;
+            state = SpawnState.WAITING;
 
-			yield break;
-		}
+            yield break;
+        }
 
-		void SpawnEnemy(Transform _enemy)
-		{
-			Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
-			Instantiate(_enemy, _sp.position, _sp.rotation);
-		}
+        void SpawnEnemy(Transform _enemy)
+        {
+            Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Count)];
+            Instantiate(_enemy, _sp.position, _sp.rotation);
+        }
 
-	}
+        public void AddSpawnPoints(List<Transform> list)
+        {
+            spawnPoints.AddRange(list);
+        }
+
+    }
 }
