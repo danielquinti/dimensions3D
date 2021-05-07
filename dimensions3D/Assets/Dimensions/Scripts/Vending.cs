@@ -7,19 +7,22 @@ using Unity.FPS.Game;
 public class Vending : MonoBehaviour
 {
     public int price = 500;
-    public string itemName = "";
     public InfoDisplay display;
     public AudioClip Sold;
     public AudioClip Declined;
-    public Unity.FPS.Game.WeaponController weapon;
     
     virtual public void OnTriggerEnter (Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            display.SetInfo("Press F to buy " + itemName + " for " + price + " tokens.");
+            ShowPrice();
             other.GetComponent<Wallet>().SetReachable(this);
         }
+    }
+
+    virtual public void ShowPrice()
+    {
+        return;
     }
 
     void OnTriggerExit(Collider other)
@@ -31,13 +34,10 @@ public class Vending : MonoBehaviour
         }
     }
     
-    virtual public void GetReward(MonoBehaviour player)
+    virtual public void Sell(MonoBehaviour player)
     {
         AudioUtility.CreateSFX(Sold, transform.position, AudioUtility.AudioGroups.Pickup, 0f);
-        display.SetInfo(itemName + " acquired.");
-    	player.GetComponent<PlayerWeaponsManager>().AddWeapon(weapon);
         player.GetComponent<Wallet>().SetReachable(null);
-        Destroy(this);
     }
 
     public void Decline()

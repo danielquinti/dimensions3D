@@ -1353,6 +1353,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1640077737}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &557239815 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 386518192198433499, guid: be43c310efe6ba441a62b8321eaf3f75,
+    type: 3}
+  m_PrefabInstance: {fileID: 307976851}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 752544f598f22dc4f87374ee9c4bc766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &788632548 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8815008910542478860, guid: be43c310efe6ba441a62b8321eaf3f75,
@@ -1371,18 +1383,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1640077737}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &971985825 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3265179824215246900, guid: be43c310efe6ba441a62b8321eaf3f75,
-    type: 3}
-  m_PrefabInstance: {fileID: 307976851}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 752544f598f22dc4f87374ee9c4bc766, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1233984073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1589,7 +1589,7 @@ PrefabInstance:
         type: 3}
       propertyPath: display
       value: 
-      objectReference: {fileID: 971985825}
+      objectReference: {fileID: 557239815}
     - target: {fileID: 2761049196097222058, guid: 15fd04ebfd6e15320afc11a0ccfb34f0,
         type: 3}
       propertyPath: manager
@@ -1660,6 +1660,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Airport
       objectReference: {fileID: 0}
+    - target: {fileID: 6142542611036483472, guid: 15fd04ebfd6e15320afc11a0ccfb34f0,
+        type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 8323776800172828795, guid: 31d97e822763d1f4cb769f7e3f7f7333,
+        type: 3}
+    - target: {fileID: 6142542611036483472, guid: 15fd04ebfd6e15320afc11a0ccfb34f0,
+        type: 3}
+      propertyPath: display
+      value: 
+      objectReference: {fileID: 557239815}
+    - target: {fileID: 6142542611036483472, guid: 15fd04ebfd6e15320afc11a0ccfb34f0,
+        type: 3}
+      propertyPath: itemName
+      value: Shotgun
+      objectReference: {fileID: 0}
     - target: {fileID: 6322660540686748050, guid: 15fd04ebfd6e15320afc11a0ccfb34f0,
         type: 3}
       propertyPath: price
@@ -1669,7 +1685,7 @@ PrefabInstance:
         type: 3}
       propertyPath: display
       value: 
-      objectReference: {fileID: 971985825}
+      objectReference: {fileID: 0}
     - target: {fileID: 6322660540686748050, guid: 15fd04ebfd6e15320afc11a0ccfb34f0,
         type: 3}
       propertyPath: Declined
@@ -1690,12 +1706,28 @@ PrefabInstance:
         type: 3}
       propertyPath: display
       value: 
-      objectReference: {fileID: 971985825}
+      objectReference: {fileID: 0}
     - target: {fileID: 6715306596048216032, guid: 15fd04ebfd6e15320afc11a0ccfb34f0,
         type: 3}
       propertyPath: Declined
       value: 
       objectReference: {fileID: 8300000, guid: 69d23591fa016a540b3be1db03e55a48, type: 3}
+    - target: {fileID: 6895473320738585058, guid: 15fd04ebfd6e15320afc11a0ccfb34f0,
+        type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 8323776800172828795, guid: 3439b4874b7b44e4eb2216314c46b85c,
+        type: 3}
+    - target: {fileID: 6895473320738585058, guid: 15fd04ebfd6e15320afc11a0ccfb34f0,
+        type: 3}
+      propertyPath: display
+      value: 
+      objectReference: {fileID: 557239815}
+    - target: {fileID: 6895473320738585058, guid: 15fd04ebfd6e15320afc11a0ccfb34f0,
+        type: 3}
+      propertyPath: itemName
+      value: Grenade Launcher
+      objectReference: {fileID: 0}
     - target: {fileID: 6985524871254795889, guid: 15fd04ebfd6e15320afc11a0ccfb34f0,
         type: 3}
       propertyPath: m_LocalPosition.z

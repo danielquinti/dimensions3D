@@ -41,7 +41,7 @@ public class Wallet : MonoBehaviour
     {
         if (this.reachable != null && Pay(this.reachable.price))
         {
-            this.reachable.GetReward(this);
+            this.reachable.Sell(this);
         }
         else if (this.reachable != null)
         {

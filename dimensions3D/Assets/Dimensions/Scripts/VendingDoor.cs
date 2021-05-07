@@ -7,19 +7,15 @@ public class VendingDoor : Vending
 {
     public Animator doorAnimator;
     public RoomManager manager;
-    override public void OnTriggerEnter (Collider other)
+
+    override public void ShowPrice()
     {
-        if (other.gameObject.tag == "Player")
-        {
-            display.SetInfo("Press F to open for " + price + " tokens.");
-            other.GetComponent<Wallet>().SetReachable(this);
-        }
+        display.SetInfo("Press F to open for " + price + " tokens.");
     }
-    
-    override public void GetReward(MonoBehaviour player)
+    override public void Sell(MonoBehaviour player)
     {
         display.SetInfo("Door opened.");
-        player.GetComponent<Wallet>().SetReachable(null);
+        base.Sell(player);
         manager.OnOpenRoom();
         Disable();
     }
