@@ -12,11 +12,10 @@ public class Vending : MonoBehaviour
     public AudioClip Sold;
     public AudioClip Declined;
     public Unity.FPS.Game.WeaponController weapon;
-    protected bool active = true;
     
     virtual public void OnTriggerEnter (Collider other)
     {
-        if ((other.gameObject.tag == "Player") & active)
+        if (other.gameObject.tag == "Player")
         {
             display.SetInfo("Press F to buy " + itemName + " for " + price + " tokens.");
             other.GetComponent<Wallet>().SetReachable(this);
@@ -37,8 +36,8 @@ public class Vending : MonoBehaviour
         AudioUtility.CreateSFX(Sold, transform.position, AudioUtility.AudioGroups.Pickup, 0f);
         display.SetInfo(itemName + " acquired.");
     	player.GetComponent<PlayerWeaponsManager>().AddWeapon(weapon);
-        active = false;
         player.GetComponent<Wallet>().SetReachable(null);
+        Destroy(this);
     }
 
     public void Decline()

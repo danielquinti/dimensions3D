@@ -6,10 +6,10 @@ using UnityEngine;
 public class VendingDoor : Vending
 {
     public Animator doorAnimator;
-    
+    public RoomManager manager;
     override public void OnTriggerEnter (Collider other)
     {
-        if ((other.gameObject.tag == "Player") & active)
+        if (other.gameObject.tag == "Player")
         {
             display.SetInfo("Press F to open for " + price + " tokens.");
             other.GetComponent<Wallet>().SetReachable(this);
@@ -19,14 +19,14 @@ public class VendingDoor : Vending
     override public void GetReward(MonoBehaviour player)
     {
         display.SetInfo("Door opened.");
-    	// set animator to open
-    	doorAnimator.SetBool("character_nearby", true);
-        active = false;
         player.GetComponent<Wallet>().SetReachable(null);
+        manager.OnOpenRoom();
+        Disable();
     }
 
-    public bool IsActive()
+    public void Disable()
     {
-        return active;
+        doorAnimator.SetBool("character_nearby", true);
+        Destroy(this);
     }
 }
