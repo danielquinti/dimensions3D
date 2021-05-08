@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 71.98}
-  m_SizeDelta: {x: 643.8, y: 304.4}
+  m_AnchoredPosition: {x: 0, y: 191}
+  m_SizeDelta: {x: 644, y: 304}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &287730034
 MonoBehaviour:
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YOU HAVE DIED
+  m_text: level completed
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8e057ed5db12cc0429aeb9d6c2f2e195, type: 2}
   m_sharedMaterial: {fileID: 3030731274661793040, guid: 8e057ed5db12cc0429aeb9d6c2f2e195,
@@ -194,12 +194,12 @@ MonoBehaviour:
     rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
-  m_colorMode: 3
+  m_colorMode: 1
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 0.1830188, b: 0.1830188, a: 1}
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 0.1830188, b: 0.1830188, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -157.8504, y: 0, z: -157.85043, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -819,7 +819,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 25}
+  m_AnchoredPosition: {x: 226, y: 114}
   m_SizeDelta: {x: 380, y: 70}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &1844865838
@@ -880,7 +880,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: b07cc9ee9c9f4004dbd4a4df90de7e20, type: 3}
+  m_Texture: {fileID: 2800000, guid: 400670ad887c8b642b8f44dc4e4ebaab, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1142,7 +1142,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 105}
+  m_AnchoredPosition: {x: -247.3, y: 114}
   m_SizeDelta: {x: 380, y: 70}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &2142617843
