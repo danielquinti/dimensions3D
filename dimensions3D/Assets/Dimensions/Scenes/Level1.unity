@@ -275,6 +275,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1065074375515001679, guid: be43c310efe6ba441a62b8321eaf3f75,
+        type: 3}
+      propertyPath: AudioMixers.Array.data[0]
+      value: 
+      objectReference: {fileID: 24100000, guid: 104165b755785c245a477bf350076220,
+        type: 2}
     - target: {fileID: 1315839542190839937, guid: be43c310efe6ba441a62b8321eaf3f75,
         type: 3}
       propertyPath: m_RootOrder
@@ -425,6 +431,12 @@ PrefabInstance:
       propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3194768811409814515, guid: be43c310efe6ba441a62b8321eaf3f75,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 243216665894616700, guid: 104165b755785c245a477bf350076220,
+        type: 2}
     - target: {fileID: 3948143804305542432, guid: be43c310efe6ba441a62b8321eaf3f75,
         type: 3}
       propertyPath: m_AnchoredPosition.y
