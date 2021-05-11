@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 4259338922666041528}
   - component: {fileID: 3486161458929006927}
   m_Layer: 0
-  m_Name: RuzaDoor
+  m_Name: RoomDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -367,10 +367,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   price: 500
-  itemName: 
-  display: {fileID: 0}
-  weapon: {fileID: 0}
+  Sold: {fileID: 8300000, guid: 31722fb7c909a1d41b4c574896329ad1, type: 3}
+  Declined: {fileID: 8300000, guid: 69d23591fa016a540b3be1db03e55a48, type: 3}
   doorAnimator: {fileID: 4455369589080148176}
+  manager: {fileID: 0}
 --- !u!65 &3486161458929006927
 BoxCollider:
   m_ObjectHideFlags: 0

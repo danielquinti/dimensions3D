@@ -9,10 +9,11 @@ public class Wallet : MonoBehaviour
 
     public int CurrentBalance;
     public Vending reachable;
-    public InfoDisplay display;
+    protected InfoDisplay display;
 
     void Start()
     {
+        display = GameObject.Find("WalletBalance").GetComponent<InfoDisplay>();
         CurrentBalance = StartingBalance;
         m_InputHandler = GetComponent<Unity.FPS.Gameplay.PlayerInputHandler>();
         display.SetInfo(CurrentBalance.ToString());

@@ -7,10 +7,15 @@ using Unity.FPS.Game;
 public class Vending : MonoBehaviour
 {
     public int price = 500;
-    public InfoDisplay display;
+    protected InfoDisplay display;
     public AudioClip Sold;
     public AudioClip Declined;
     
+    virtual public void Start()
+    {
+        display = GameObject.Find("InteractDisplay").GetComponent<InfoDisplay>();
+    }
+
     virtual public void OnTriggerEnter (Collider other)
     {
         if (other.gameObject.tag == "Player")

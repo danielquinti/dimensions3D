@@ -59,10 +59,12 @@ namespace Unity.FPS.AI
         {
             get { return state; }
         }
-        public InfoDisplay roundInfo;
-        public InfoDisplay enemyTally;
+        protected InfoDisplay roundInfo;
+        protected InfoDisplay enemyTally;
         void Start()
         {
+            roundInfo = GameObject.Find("RoundNameDisplay").GetComponent<InfoDisplay>(); ;
+            enemyTally = GameObject.Find("EnemyTallyDisplay").GetComponent<InfoDisplay>();
             Enemies = new List<CustomEnemyController>();
             if (spawnPoints.Count == 0)
             {
