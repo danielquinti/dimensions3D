@@ -216,6 +216,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1640077737}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &165768442 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3835814331618876554, guid: 15fd04ebfd6e15320afc11a0ccfb34f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1640077737}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &265506999 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7728892197180153254, guid: 15fd04ebfd6e15320afc11a0ccfb34f0,
@@ -1353,6 +1359,29 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1640077737}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &357276135 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9115105890240499068, guid: 15fd04ebfd6e15320afc11a0ccfb34f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1640077737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &357276137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357276135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd8f35f478036a348ba2d9663874d94a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawners:
+  - {fileID: 896425347}
+  - {fileID: 165768442}
+  doors:
+  - {fileID: 1311798224}
 --- !u!114 &557239815 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 386518192198433499, guid: be43c310efe6ba441a62b8321eaf3f75,
@@ -1462,6 +1491,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37995319e1e07dc4bbd7e7c0afb172d1, type: 3}
+--- !u!114 &1311798224 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2761049196097222058, guid: 15fd04ebfd6e15320afc11a0ccfb34f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1640077737}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308834cc487a8fae0ad46f12c789f551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1341053811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1587,7 +1628,7 @@ PrefabInstance:
         type: 3}
       propertyPath: manager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 357276137}
     - target: {fileID: 2761049196097222058, guid: 15fd04ebfd6e15320afc11a0ccfb34f0,
         type: 3}
       propertyPath: Declined

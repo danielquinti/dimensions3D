@@ -6,8 +6,12 @@ public class RoomManager : MonoBehaviour
 {
     public List<Transform> spawners;
     public List<VendingDoor> doors;
-    public Unity.FPS.AI.CustomEnemyManager enemyManager;
+    protected Unity.FPS.AI.CustomEnemyManager enemyManager;
     
+    void Start()
+    {
+        enemyManager = GameObject.Find("CustomGameManager").GetComponent<CustomEnemyManager>();
+    }
     public void OnOpenRoom()
     {
         enemyManager.AddSpawnPoints(spawners);
