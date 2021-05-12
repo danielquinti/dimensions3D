@@ -8,7 +8,6 @@ public class VendingDoor : Vending
     public Animator doorAnimator;
     public RoomManager manager;
     private bool active = true;
-
     override public void ShowPrice()
     {
         if (active) { display.SetInfo("Press F to open for " + price + " tokens."); }
@@ -17,7 +16,7 @@ public class VendingDoor : Vending
     {
         display.SetInfo("Door opened.");
         base.Sell(player);
-        manager.OnOpenRoom();
+        manager.OnEnterRoom();
         Disable();
     }
 

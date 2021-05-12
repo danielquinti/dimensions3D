@@ -13,7 +13,7 @@ public class RoomManager : MonoBehaviour
         enemyManager = GameObject.Find("CustomGameManager").GetComponent<CustomEnemyManager>();
     }
 
-    public virtual void OnOpenRoom()
+    public virtual void OnEnterRoom()
     {
         enemyManager.AddSpawnPoints(spawners);
         foreach (VendingDoor door in doors){

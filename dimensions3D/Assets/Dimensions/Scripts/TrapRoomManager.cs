@@ -5,7 +5,7 @@ using Unity.FPS.AI;
 public class TrapRoomManager : RoomManager
 {
     private bool active = false;
-    public override void OnOpenRoom()
+    public override void OnEnterRoom()
     {
         if (active){
             enemyManager.RestoreSpawnPoints();
@@ -27,5 +27,14 @@ public class TrapRoomManager : RoomManager
         {
             door.Close();
         }
+    }
+
+    public void DeactivateTrap()
+    {
+        foreach (VendingDoor door in doors)
+        {
+            door.Open();
+        }
+        enemyManager.RestoreSpawnPoints();
     }
 }
