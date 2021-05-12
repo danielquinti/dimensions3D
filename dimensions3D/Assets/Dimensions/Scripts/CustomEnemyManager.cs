@@ -9,8 +9,8 @@ namespace Unity.FPS.AI
     {
         public List<CustomEnemyController> Enemies { get; private set; }
         public int NumberOfEnemiesTotal { get; private set; }
-        public int NumberOfEnemiesRemaining;
-        public int MaxNumberOfEnemies = 1;
+        private int NumberOfEnemiesRemaining;
+        public int MaxConcurrentEnemies = 1;
 
         public void RegisterEnemy(CustomEnemyController enemy)
         {
@@ -142,7 +142,7 @@ namespace Unity.FPS.AI
             int i = 0;
             while (i < _wave.enemies.Count)
             {
-                if (Enemies.Count < MaxNumberOfEnemies)
+                if (Enemies.Count < MaxConcurrentEnemies)
                 {
                     SpawnEnemy(_wave.enemies[i]);
                     i++;
@@ -165,6 +165,18 @@ namespace Unity.FPS.AI
         public void AddSpawnPoints(List<Transform> list)
         {
             spawnPoints.AddRange(list);
+        }
+
+        private List<Transform> inactive;
+        public void ChangeSpawnPoints(List<Transform> updated)
+        {
+            inactive = new List<Transform>(spawnPoints);
+            spawnPoints = updated;
+        }
+
+        public void RestoreSpawnPoints()
+        {
+            spawnPoints.AddRange(inactive);
         }
 
     }

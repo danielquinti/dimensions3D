@@ -7,10 +7,11 @@ public class VendingDoor : Vending
 {
     public Animator doorAnimator;
     public RoomManager manager;
+    private bool active = true;
 
     override public void ShowPrice()
     {
-        display.SetInfo("Press F to open for " + price + " tokens.");
+        if (active) { display.SetInfo("Press F to open for " + price + " tokens."); }
     }
     override public void Sell(MonoBehaviour player)
     {
@@ -20,9 +21,20 @@ public class VendingDoor : Vending
         Disable();
     }
 
-    public void Disable()
+    public void Open()
     {
         doorAnimator.SetBool("character_nearby", true);
-        Destroy(this);
+    }
+
+    public void Disable()
+    {
+        Open();
+        active = false;
+    }
+
+    public void Close()
+    {
+        doorAnimator.SetBool("character_nearby", false);
+        active = true;
     }
 }

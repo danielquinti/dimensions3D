@@ -7,8 +7,8 @@ public class Wallet : MonoBehaviour
     
     Unity.FPS.Gameplay.PlayerInputHandler m_InputHandler;
 
-    public int CurrentBalance;
-    public Vending reachable;
+    protected int CurrentBalance;
+    protected Vending reachable;
     protected InfoDisplay display;
 
     void Start()
