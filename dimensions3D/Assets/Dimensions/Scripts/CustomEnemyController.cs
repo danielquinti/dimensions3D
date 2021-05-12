@@ -136,12 +136,9 @@ namespace Unity.FPS.AI
         {
             m_CustomEnemyManager = FindObjectOfType<CustomEnemyManager>();
             DebugUtility.HandleErrorIfNullFindObject<CustomEnemyManager, CustomEnemyController>(m_CustomEnemyManager, this);
-
             m_ActorsManager = FindObjectOfType<ActorsManager>();
             DebugUtility.HandleErrorIfNullFindObject<ActorsManager, CustomEnemyController>(m_ActorsManager, this);
-
             m_CustomEnemyManager.RegisterEnemy(this);
-
             m_Health = GetComponent<Health>();
             DebugUtility.HandleErrorIfNullGetComponent<Health, CustomEnemyController>(m_Health, this, gameObject);
 
@@ -150,19 +147,16 @@ namespace Unity.FPS.AI
 
             NavMeshAgent = GetComponent<NavMeshAgent>();
             m_SelfColliders = GetComponentsInChildren<Collider>();
-
             m_GameFlowManager = FindObjectOfType<GameFlowManager>();
             DebugUtility.HandleErrorIfNullFindObject<GameFlowManager, CustomEnemyController>(m_GameFlowManager, this);
 
             // Subscribe to damage & death actions
             m_Health.OnDie += OnDie;
             m_Health.OnDamaged += OnDamaged;
-
             // Find and initialize all weapons
             FindAndInitializeAllWeapons();
             var weapon = GetCurrentWeapon();
             weapon.ShowWeapon(true);
-
             var CustomDetectionModules = GetComponentsInChildren<CustomDetectionModule>();
             DebugUtility.HandleErrorIfNoComponentFound<CustomDetectionModule, CustomEnemyController>(CustomDetectionModules.Length, this,
                 gameObject);

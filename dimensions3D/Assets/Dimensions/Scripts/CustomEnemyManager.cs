@@ -11,7 +11,7 @@ namespace Unity.FPS.AI
         public int NumberOfEnemiesTotal { get; private set; }
         private int NumberOfEnemiesRemaining;
         public int MaxConcurrentEnemies = 1;
-
+        public bool spawning = true;
         public void RegisterEnemy(CustomEnemyController enemy)
         {
             Enemies.Add(enemy);
@@ -76,9 +76,13 @@ namespace Unity.FPS.AI
 
         void Update()
         {
+            if (!spawning)
+            {
+                return;
+            }
             if (state == SpawnState.WAITING)
             {
-                if (!EnemyIsAlive())
+                if (!EnemyIsAlive() & spawning)
                 {
                     roundInfo.SetInfo("Wave completed!");
                     WaveCompleted();
@@ -140,7 +144,7 @@ namespace Unity.FPS.AI
             roundInfo.SetInfo(_wave.name);
             state = SpawnState.SPAWNING;
             int i = 0;
-            while (i < _wave.enemies.Count)
+            while (i < _wave.enemies.Count & spawning)
             {
                 if (Enemies.Count < MaxConcurrentEnemies)
                 {
@@ -178,6 +182,5 @@ namespace Unity.FPS.AI
         {
             spawnPoints.AddRange(inactive);
         }
-
     }
 }
