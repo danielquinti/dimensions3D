@@ -9,20 +9,22 @@ public class VendingDoor : Vending
     public Animator doorAnimator;
     public RoomManager manager;
     private bool active = true;
+    public bool useCallBack;
     public UnityEvent saleEvent;
     
     override public void ShowPrice()
     {
         if (active) { display.SetInfo("Press F to open for " + price + " tokens."); }
     }
+
     override public void Sell(MonoBehaviour player)
     {
         display.SetInfo("Door opened.");
         base.Sell(player);
-        if (saleEvent == null)
+        if (!useCallBack)
             manager.OnEnterRoom();
         else
-            saleEvent.Invoke();
+            saleEvent?.Invoke();
         Disable();
     }
 
