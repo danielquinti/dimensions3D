@@ -1436,6 +1436,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 814417836257332542, guid: 37995319e1e07dc4bbd7e7c0afb172d1,
+        type: 3}
+      propertyPath: MaxSpeedInAir
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 814417836257332542, guid: 37995319e1e07dc4bbd7e7c0afb172d1,
+        type: 3}
+      propertyPath: MaxSpeedOnGround
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4847348546520508008, guid: 37995319e1e07dc4bbd7e7c0afb172d1,
         type: 3}
       propertyPath: display
@@ -1459,17 +1469,17 @@ PrefabInstance:
     - target: {fileID: 8746678193447392789, guid: 37995319e1e07dc4bbd7e7c0afb172d1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -140
+      value: -180.65
       objectReference: {fileID: 0}
     - target: {fileID: 8746678193447392789, guid: 37995319e1e07dc4bbd7e7c0afb172d1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.6
+      value: 4.19
       objectReference: {fileID: 0}
     - target: {fileID: 8746678193447392789, guid: 37995319e1e07dc4bbd7e7c0afb172d1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.61
+      value: -46.57
       objectReference: {fileID: 0}
     - target: {fileID: 8746678193447392789, guid: 37995319e1e07dc4bbd7e7c0afb172d1,
         type: 3}
