@@ -14836,6 +14836,41 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 1447417651620659559}
+    - target: {fileID: 4259338922666041528, guid: 57b3a7b8cc9051e809b5623d24ac90ec,
+        type: 3}
+      propertyPath: saleEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259338922666041528, guid: 57b3a7b8cc9051e809b5623d24ac90ec,
+        type: 3}
+      propertyPath: saleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259338922666041528, guid: 57b3a7b8cc9051e809b5623d24ac90ec,
+        type: 3}
+      propertyPath: saleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1447417651620659559}
+    - target: {fileID: 4259338922666041528, guid: 57b3a7b8cc9051e809b5623d24ac90ec,
+        type: 3}
+      propertyPath: saleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259338922666041528, guid: 57b3a7b8cc9051e809b5623d24ac90ec,
+        type: 3}
+      propertyPath: saleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DeactivateTrap
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259338922666041528, guid: 57b3a7b8cc9051e809b5623d24ac90ec,
+        type: 3}
+      propertyPath: saleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TrapRoomManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259338922666041528, guid: 57b3a7b8cc9051e809b5623d24ac90ec,
+        type: 3}
+      propertyPath: saleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4455369589087479398, guid: 57b3a7b8cc9051e809b5623d24ac90ec,
         type: 3}
       propertyPath: m_Name
@@ -73936,6 +73971,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36f935f229fbc1446ad24783d52c198f, type: 3}
+--- !u!4 &5286482489746286983 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4299735713862935306, guid: 36f935f229fbc1446ad24783d52c198f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8284055993574886029}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1447417651620659559 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7413104922058607594, guid: 36f935f229fbc1446ad24783d52c198f,
@@ -73948,12 +73989,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7179317ad681b0418d2e5af44b5987b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &5286482489746286983 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4299735713862935306, guid: 36f935f229fbc1446ad24783d52c198f,
-    type: 3}
-  m_PrefabInstance: {fileID: 8284055993574886029}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8329076388599415548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77086,6 +77121,41 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 1447417651620659559}
+    - target: {fileID: 4259338922666041528, guid: 57b3a7b8cc9051e809b5623d24ac90ec,
+        type: 3}
+      propertyPath: saleEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259338922666041528, guid: 57b3a7b8cc9051e809b5623d24ac90ec,
+        type: 3}
+      propertyPath: saleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259338922666041528, guid: 57b3a7b8cc9051e809b5623d24ac90ec,
+        type: 3}
+      propertyPath: saleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1447417651620659559}
+    - target: {fileID: 4259338922666041528, guid: 57b3a7b8cc9051e809b5623d24ac90ec,
+        type: 3}
+      propertyPath: saleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259338922666041528, guid: 57b3a7b8cc9051e809b5623d24ac90ec,
+        type: 3}
+      propertyPath: saleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DeactivateTrap
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259338922666041528, guid: 57b3a7b8cc9051e809b5623d24ac90ec,
+        type: 3}
+      propertyPath: saleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TrapRoomManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259338922666041528, guid: 57b3a7b8cc9051e809b5623d24ac90ec,
+        type: 3}
+      propertyPath: saleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4455369589087479398, guid: 57b3a7b8cc9051e809b5623d24ac90ec,
         type: 3}
       propertyPath: m_Name
