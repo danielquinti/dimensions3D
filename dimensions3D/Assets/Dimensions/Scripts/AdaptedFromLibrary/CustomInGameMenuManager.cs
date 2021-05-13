@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 namespace Unity.FPS.UI
 {
+    /*
+     * simplified menu manager from microgame 
+     */
     public class CustomInGameMenuManager : MonoBehaviour
     {
         [Tooltip("Root GameObject of the menu used to toggle its activation")]

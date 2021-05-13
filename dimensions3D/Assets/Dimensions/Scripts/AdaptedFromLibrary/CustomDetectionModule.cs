@@ -5,6 +5,10 @@ using UnityEngine.Events;
 
 namespace Unity.FPS.AI
 {
+    /*
+     * Added feature wrt original source:
+     * serialized toggle to detect by default
+     */
     public class CustomDetectionModule : MonoBehaviour
     {
         [Tooltip("The enemy needs to see the target to follow it")]
@@ -96,6 +100,10 @@ namespace Unity.FPS.AI
                                 }
                             }
                         }
+                        /*
+                         *  this type of detection option (always detected) was added to the original library source
+                         *  to accomodate our desired gameplay mechanics
+                         */
                         else
                         {
                             IsSeeingTarget = true;

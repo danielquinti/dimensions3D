@@ -7,11 +7,13 @@ namespace Unity.FPS.AI
 {
     public class CustomEnemyManager : MonoBehaviour
     {
-        public List<CustomEnemyController> Enemies { get; private set; }
-        public int NumberOfEnemiesTotal { get; private set; }
+        public List<CustomEnemyController> Enemies;
+        public int NumberOfEnemiesTotal;
         private int NumberOfEnemiesRemaining;
         public int MaxConcurrentEnemies = 1;
         public bool spawning = true;
+
+        // keep track of how many  enemies are left from the round
         public void RegisterEnemy(CustomEnemyController enemy)
         {
             Enemies.Add(enemy);
@@ -20,7 +22,6 @@ namespace Unity.FPS.AI
         public void UnregisterEnemy(CustomEnemyController enemyKilled)
         {
             NumberOfEnemiesRemaining--;
-            // removes the enemy from the list, so that we can keep track of how many are left on the map
             Enemies.Remove(enemyKilled);
             enemyTally.SetInfo(NumberOfEnemiesRemaining + "/" + NumberOfEnemiesTotal);
 
@@ -36,6 +37,7 @@ namespace Unity.FPS.AI
             public List<Transform> enemies;
         }
 
+        // iterate through the waves that were assigned from the inspector
         public Wave[] waves;
         private int nextWave = 0;
         public int NextWave
@@ -166,6 +168,11 @@ namespace Unity.FPS.AI
             Instantiate(_enemy, _sp.position, _sp.rotation);
         }
 
+
+        /* 
+         * spawners can be enabled, temporarily disabled 
+         * and restored from other scripts
+         */
         public void AddSpawnPoints(List<Transform> list)
         {
             spawnPoints.AddRange(list);

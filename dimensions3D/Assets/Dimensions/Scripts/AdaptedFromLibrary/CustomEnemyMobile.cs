@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace Unity.FPS.AI
 {
+    /*
+     * no features were added wrt original source,
+     * references are just changed to our custom components
+     */
     [RequireComponent(typeof(CustomEnemyController))]
     public class CustomEnemyMobile : MonoBehaviour
     {

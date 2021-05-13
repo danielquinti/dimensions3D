@@ -6,6 +6,11 @@ using UnityEngine.Events;
 
 namespace Unity.FPS.AI
 {
+    /* features added to the original source:
+     * uniformly distributed multidrop
+     * randomized speed across different enemies
+     */
+
     [RequireComponent(typeof(Health), typeof(Actor), typeof(NavMeshAgent))]
     public class CustomEnemyController : MonoBehaviour
     {
