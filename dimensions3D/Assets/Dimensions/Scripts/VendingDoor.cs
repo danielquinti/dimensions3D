@@ -14,6 +14,7 @@ public class VendingDoor : Vending
     
     override public void ShowPrice()
     {
+        // only show prompt if the door is closed
         if (active) { display.SetInfo("Press F to open for " + price + " tokens."); }
     }
 
@@ -21,21 +22,18 @@ public class VendingDoor : Vending
     {
         display.SetInfo("Door opened.");
         base.Sell(player);
+        Open();
         if (!useCallBack)
+            // default behaviour
             manager.OnEnterRoom();
         else
+            // can be added by inspector
             saleEvent?.Invoke();
-        Disable();
     }
 
     public void Open()
     {
         doorAnimator.SetBool("character_nearby", true);
-    }
-
-    public void Disable()
-    {
-        Open();
         active = false;
     }
 

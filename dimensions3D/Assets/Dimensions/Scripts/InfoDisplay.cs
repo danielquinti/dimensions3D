@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/*
+ * This class mediates between the other scripts and the TextMesh 
+ * graphic components to change the text that they display
+ */
 public class InfoDisplay : MonoBehaviour
 {
     public TextMeshProUGUI display;

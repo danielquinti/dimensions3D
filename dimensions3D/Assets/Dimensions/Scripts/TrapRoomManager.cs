@@ -2,19 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.FPS.AI;
+
 public class TrapRoomManager : RoomManager
 {
     private bool active = false;
+
     public override void OnEnterRoom()
     {
-        if (active){
+        // open a door in an activated room
+        if (active)
+        {
             enemyManager.RestoreSpawnPoints();
         }
+        // enter a disabled trap room
         else
         {
             foreach (VendingDoor door in doors)
             {
-                door.Disable();
+                door.Open();
             }
         }
     }
@@ -22,7 +27,9 @@ public class TrapRoomManager : RoomManager
     public void ActivateTrap()
     {
         active = true;
+        // only the spawners in this room can be active while the player remains trapped
         enemyManager.ChangeSpawnPoints(spawners);
+        // close every door
         foreach (VendingDoor door in doors)
         {
             door.Close();
