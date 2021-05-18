@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\AdaptedFromLibrary"
   ],
-  "SelectedNode": "\\Wallet.cs",
+  "SelectedNode": "\\AdaptedFromLibrary\\CustomInGameMenuManager.cs",
   "PreviewInSolutionExplorer": false
 }
