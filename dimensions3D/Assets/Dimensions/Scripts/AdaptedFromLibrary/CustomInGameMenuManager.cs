@@ -17,9 +17,6 @@ namespace Unity.FPS.UI
         [Tooltip("Master volume when menu is open")] [Range(0.001f, 1f)]
         public float VolumeWhenMenuOpen = 0.5f;
 
-        PlayerInputHandler m_PlayerInputsHandler;
-        Health m_PlayerHealth;
-
         void Start()
         {
             MenuRoot.SetActive(false);
