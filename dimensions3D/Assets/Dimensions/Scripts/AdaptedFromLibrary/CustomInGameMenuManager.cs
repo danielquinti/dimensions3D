@@ -34,12 +34,6 @@ namespace Unity.FPS.UI
                 Cursor.visible = false;
             }
 
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-
             if (Input.GetButtonDown(GameConstants.k_ButtonNamePauseMenu)
                 || (MenuRoot.activeSelf && Input.GetButtonDown(GameConstants.k_ButtonNameCancel)))
             {
@@ -69,14 +63,18 @@ namespace Unity.FPS.UI
             {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+                //Stop the game
                 Time.timeScale = 0f;
+                //Dim the volume
                 AudioUtility.SetMasterVolume(VolumeWhenMenuOpen);
                 EventSystem.current.SetSelectedGameObject(null);
             }
             else
             {
+                // lock cursor to the center
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+                // resume the game
                 Time.timeScale = 1f;
                 AudioUtility.SetMasterVolume(1);
             }
