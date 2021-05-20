@@ -115,13 +115,8 @@ namespace Unity.FPS.AI
             // reset the counter
             state = SpawnState.COUNTING;
             waveCountdown = timeBetweenWaves;
-            // cyclic wave list traversal
-            if (nextWave + 1 > waves.Length - 1)
-            {
-                nextWave = 0;
-                roundInfo.SetInfo("ALL WAVES COMPLETE! Looping...");
-            }
-            else
+            // repeats the last wave indefinitely
+            if (nextWave + 1 <= waves.Length - 1)
             {
                 nextWave++;
             }
