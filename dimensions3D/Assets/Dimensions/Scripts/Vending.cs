@@ -31,7 +31,7 @@ public abstract class Vending : MonoBehaviour
         return;
     }
 
-    void OnTriggerExit(Collider other)
+    virtual protected void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
@@ -42,11 +42,12 @@ public abstract class Vending : MonoBehaviour
         }
     }
 
-    virtual public void Sell(MonoBehaviour player)
+    virtual public void Sell(Wallet wallet)
     {
         // play sell sound
         AudioUtility.CreateSFX(Sold, transform.position, AudioUtility.AudioGroups.Pickup, 0f);
-        player.GetComponent<Wallet>().SetReachable(null);
+        display.SetInfo("");
+        wallet.SetReachable(null);
     }
 
     public void Decline()

@@ -14,15 +14,11 @@ public class VendingWeapon : Vending
         display.SetInfo("Press F to buy " + itemName + " for " + price + " tokens.");
     }
 
-    override public void Sell(MonoBehaviour player)
+    override public void Sell(Wallet wallet)
     {
-        // play sound
-        AudioUtility.CreateSFX(Sold, transform.position, AudioUtility.AudioGroups.Pickup, 0f);
-        display.SetInfo(itemName + " acquired.");
+        base.Sell(wallet);
         // acquire weapon
-        player.GetComponent<PlayerWeaponsManager>().AddWeapon(weapon);
-        // reset player-reachable vending stations
-        player.GetComponent<Wallet>().SetReachable(null);
+        wallet.GetComponent<PlayerWeaponsManager>().AddWeapon(weapon);
         Destroy(this);
     }
 }

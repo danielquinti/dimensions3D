@@ -18,10 +18,9 @@ public class VendingDoor : Vending
         if (active) { display.SetInfo("Press F to open for " + price + " tokens."); }
     }
 
-    override public void Sell(MonoBehaviour player)
+    override public void Sell(Wallet wallet)
     {
-        display.SetInfo("Door opened.");
-        base.Sell(player);
+        base.Sell(wallet);
         Open();
         if (!useCallBack)
             // default behaviour
