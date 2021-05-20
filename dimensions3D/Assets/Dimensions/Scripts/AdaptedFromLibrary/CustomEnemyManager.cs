@@ -7,13 +7,13 @@ namespace Unity.FPS.AI
 {
     public class CustomEnemyManager : MonoBehaviour
     {
-        public List<CustomEnemyController> Enemies;
+        private List<CustomEnemyController> Enemies;
         public int NumberOfEnemiesTotal;
         private int NumberOfEnemiesRemaining;
         public int MaxConcurrentEnemies = 1;
         public bool spawning = true;
 
-        // keep track of how many  enemies are left from the round
+        // keep track of how many enemies are left from the round
         public void RegisterEnemy(CustomEnemyController enemy)
         {
             Enemies.Add(enemy);
