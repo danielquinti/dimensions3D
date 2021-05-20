@@ -31,8 +31,7 @@ namespace Unity.FPS.UI
                 Cursor.visible = false;
             }
 
-            if (Input.GetButtonDown(GameConstants.k_ButtonNamePauseMenu)
-                || (MenuRoot.activeSelf && Input.GetButtonDown(GameConstants.k_ButtonNameCancel)))
+            if (Input.GetButtonDown(GameConstants.k_ButtonNamePauseMenu))
             {
                 SetPauseMenuActivation(!MenuRoot.activeSelf);
 
