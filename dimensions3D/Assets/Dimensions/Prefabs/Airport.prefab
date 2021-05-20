@@ -652,7 +652,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4027188013396463046
 Transform:
   m_ObjectHideFlags: 0
@@ -3540,6 +3540,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6485604147308034794, guid: 7047fa93531a34b4fb9de43a3b815213,
         type: 3}
+      propertyPath: price
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6485604147308034794, guid: 7047fa93531a34b4fb9de43a3b815213,
+        type: 3}
       propertyPath: weapon
       value: 
       objectReference: {fileID: 8323776800172828795, guid: 3439b4874b7b44e4eb2216314c46b85c,
@@ -5728,6 +5733,11 @@ PrefabInstance:
         type: 3}
       propertyPath: itemName
       value: Shotgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 6485604147308034794, guid: 7047fa93531a34b4fb9de43a3b815213,
+        type: 3}
+      propertyPath: price
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 6485604147308034794, guid: 7047fa93531a34b4fb9de43a3b815213,
         type: 3}
@@ -7957,6 +7967,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4259338922666041528, guid: ce19e61471c05f44aae95c2efbbf8f15,
         type: 3}
+      propertyPath: price
+      value: 750
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259338922666041528, guid: ce19e61471c05f44aae95c2efbbf8f15,
+        type: 3}
       propertyPath: manager
       value: 
       objectReference: {fileID: 6825197227423694692}
@@ -8732,7 +8747,7 @@ PrefabInstance:
     - target: {fileID: 4259338922666041528, guid: 57b3a7b8cc9051e809b5623d24ac90ec,
         type: 3}
       propertyPath: price
-      value: 50
+      value: 750
       objectReference: {fileID: 0}
     - target: {fileID: 4259338922666041528, guid: 57b3a7b8cc9051e809b5623d24ac90ec,
         type: 3}
@@ -16098,6 +16113,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4259338922666041528, guid: ce19e61471c05f44aae95c2efbbf8f15,
         type: 3}
+      propertyPath: price
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259338922666041528, guid: ce19e61471c05f44aae95c2efbbf8f15,
+        type: 3}
       propertyPath: manager
       value: 
       objectReference: {fileID: 6825197227423694692}
@@ -16389,7 +16409,7 @@ PrefabInstance:
     - target: {fileID: 6280480947151484599, guid: 0149a1fa80f274b42b140feae7053717,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7413104922058607594, guid: 0149a1fa80f274b42b140feae7053717,
         type: 3}
@@ -69799,6 +69819,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4259338922666041528, guid: ce19e61471c05f44aae95c2efbbf8f15,
         type: 3}
+      propertyPath: price
+      value: 750
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259338922666041528, guid: ce19e61471c05f44aae95c2efbbf8f15,
+        type: 3}
       propertyPath: manager
       value: 
       objectReference: {fileID: 6825197227423694692}
@@ -70055,6 +70080,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4027188013396463046}
     m_Modifications:
+    - target: {fileID: 4259338922666041528, guid: ce19e61471c05f44aae95c2efbbf8f15,
+        type: 3}
+      propertyPath: price
+      value: 2000
+      objectReference: {fileID: 0}
     - target: {fileID: 4259338922666041528, guid: ce19e61471c05f44aae95c2efbbf8f15,
         type: 3}
       propertyPath: manager

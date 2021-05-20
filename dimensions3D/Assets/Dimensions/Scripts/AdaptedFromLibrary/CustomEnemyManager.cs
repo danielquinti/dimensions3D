@@ -8,7 +8,7 @@ namespace Unity.FPS.AI
     public class CustomEnemyManager : MonoBehaviour
     {
         private List<CustomEnemyController> Enemies;
-        public int NumberOfEnemiesTotal;
+        private int NumberOfEnemiesTotal;
         private int NumberOfEnemiesRemaining;
         public int MaxConcurrentEnemies = 1;
         public bool active = true;
