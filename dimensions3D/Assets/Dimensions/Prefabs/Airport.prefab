@@ -652,7 +652,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4027188013396463046
 Transform:
   m_ObjectHideFlags: 0
@@ -16385,6 +16385,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Room3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6280480947151484599, guid: 0149a1fa80f274b42b140feae7053717,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7413104922058607594, guid: 0149a1fa80f274b42b140feae7053717,
         type: 3}

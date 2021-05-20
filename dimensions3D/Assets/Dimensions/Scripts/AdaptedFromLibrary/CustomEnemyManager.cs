@@ -164,6 +164,7 @@ namespace Unity.FPS.AI
 
         void SpawnEnemy(Transform _enemy)
         {
+            // each enemy appears at a random spawn point
             Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Count)];
             Instantiate(_enemy, _sp.position, _sp.rotation);
         }

@@ -11,7 +11,7 @@ public abstract class Vending : MonoBehaviour
     public AudioClip Sold;
     public AudioClip Declined;
 
-    virtual public void Start()
+    virtual protected void Start()
     {
         // hardcode display reference to avoid inspector-heavy handling of vending stations
         display = GameObject.Find("InteractDisplay").GetComponent<InfoDisplay>();

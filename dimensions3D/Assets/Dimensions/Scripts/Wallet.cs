@@ -41,7 +41,7 @@ public class Wallet : MonoBehaviour
         else return false;
     }
 
-    public void TryPay()
+    protected void TryPay()
     {
         if (this.reachable != null && Pay(this.reachable.price))
         {
