@@ -11,7 +11,7 @@ namespace Unity.FPS.AI
         public int NumberOfEnemiesTotal;
         private int NumberOfEnemiesRemaining;
         public int MaxConcurrentEnemies = 1;
-        public bool spawning = true;
+        public bool active = true;
 
         // keep track of how many enemies are left from the round
         public void RegisterEnemy(CustomEnemyController enemy)
@@ -26,9 +26,12 @@ namespace Unity.FPS.AI
             enemyTally.SetInfo(NumberOfEnemiesRemaining + "/" + NumberOfEnemiesTotal);
 
         }
-
+        // this represents the possible phases of a spawning wave
+        // used for implementing a simple state machine
         public enum SpawnState { SPAWNING, WAITING, COUNTING };
 
+        // all wave attributes can be edited from the inspector
+        // for each individual wave
         [System.Serializable]
         public class Wave
         {
@@ -40,51 +43,50 @@ namespace Unity.FPS.AI
         // iterate through the waves that were assigned from the inspector
         public Wave[] waves;
         private int nextWave = 0;
-        public int NextWave
-        {
-            get { return nextWave + 1; }
-        }
 
+        // locations where enemies may spawn at a given moment
         public List<Transform> spawnPoints;
 
         public float timeBetweenWaves = 5f;
+        // time left until the next wave
         private float waveCountdown;
-        public float WaveCountdown
-        {
-            get { return waveCountdown; }
-        }
 
+        // for efficiency reasons, time to wait between checks for remaining enemies
         private float searchCountdown = 1f;
 
+        // current state of the machine
         private SpawnState state = SpawnState.COUNTING;
-        public SpawnState State
-        {
-            get { return state; }
-        }
+
+        // references to the scripts that update the text renderers in the HUD
         protected InfoDisplay roundInfo;
         protected InfoDisplay enemyTally;
         void Start()
         {
             roundInfo = GameObject.Find("RoundNameDisplay").GetComponent<InfoDisplay>(); ;
             enemyTally = GameObject.Find("EnemyTallyDisplay").GetComponent<InfoDisplay>();
+            // enemy list starts empty
             Enemies = new List<CustomEnemyController>();
             if (spawnPoints.Count == 0)
             {
                 Debug.LogError("No spawn points referenced.");
             }
 
+            // the countdown is initialized
             waveCountdown = timeBetweenWaves;
         }
-
+        // update is not robust to FPS changes
+        // so time synchronization is performed
         void Update()
         {
-            if (!spawning)
+            if (!active)
             {
                 return;
             }
+            // waiting for the player to kill all enemies
             if (state == SpawnState.WAITING)
             {
-                if (!EnemyIsAlive() & spawning)
+                // all enemies are dead
+                if (!EnemyIsAlive() & active)
                 {
                     roundInfo.SetInfo("Wave completed!");
                     WaveCompleted();
@@ -94,7 +96,7 @@ namespace Unity.FPS.AI
                     return;
                 }
             }
-
+            // a new wave must start now
             if (waveCountdown <= 0)
             {
                 if (state != SpawnState.SPAWNING)
@@ -110,9 +112,10 @@ namespace Unity.FPS.AI
 
         void WaveCompleted()
         {
+            // reset the counter
             state = SpawnState.COUNTING;
             waveCountdown = timeBetweenWaves;
-
+            // cyclic wave list traversal
             if (nextWave + 1 > waves.Length - 1)
             {
                 nextWave = 0;
@@ -140,14 +143,17 @@ namespace Unity.FPS.AI
 
         IEnumerator SpawnWave(Wave _wave)
         {
+            // initialize wave
             NumberOfEnemiesTotal = _wave.enemies.Count;
             NumberOfEnemiesRemaining = NumberOfEnemiesTotal;
             enemyTally.SetInfo(NumberOfEnemiesRemaining + "/" + NumberOfEnemiesTotal);
             roundInfo.SetInfo(_wave.name);
             state = SpawnState.SPAWNING;
+            // spawn all enemies
             int i = 0;
-            while (i < _wave.enemies.Count & spawning)
+            while (i < _wave.enemies.Count & active)
             {
+                // avoid surpassing the concurrent enemies threshold
                 if (Enemies.Count < MaxConcurrentEnemies)
                 {
                     SpawnEnemy(_wave.enemies[i]);
@@ -171,7 +177,7 @@ namespace Unity.FPS.AI
 
 
         /* 
-         * spawners can be enabled, temporarily disabled 
+         * spawners can be active, temporarily disabled 
          * and restored from other scripts
          */
         public void AddSpawnPoints(List<Transform> list)
